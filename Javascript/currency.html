@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currency Exchange Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background-color: #f4f4f9;
+        }
+        .container {
+            max-width: 400px;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input, select {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #333;
+        }
+        .error {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Currency Exchange</h1>
+    
+    <div id="status-message">Loading rates...</div>
+
+    <div id="calculator-ui" style="display: none;">
+        <div class="form-group">
+            <label for="amount">Amount (USD):</label>
+            <input type="number" id="amount" value="1" min="0" step="0.01">
+        </div>
+
+        <div class="form-group">
+            <label for="currency-select">Convert To:</label>
+            <select id="currency-select"></select>
+        </div>
+
+        <div class="result" id="conversion-result">---</div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const currencySelect = document.querySelector('#currency-select');
+    const amountInput = document.querySelector('#amount');
+    const resultDiv = document.querySelector('#conversion-result');
+    const statusMessage = document.querySelector('#status-message');
+    const calculatorUi = document.querySelector('#calculator-ui');
+    
+    let exchangeRates = {};
+
+    
+    async function fetchRates() {
+        try {
+            const response = await fetch('https://api.exchangerate-api.com/v4/latest/USD');
+            if (!response.ok) throw new Error('Network response was not ok');
+            
+            const data = await response.json();
+            exchangeRates = data.rates;
+            
+            populateDropdown(exchangeRates);
+            statusMessage.style.display = 'none';
+            calculatorUi.style.display = 'block';
+            calculateConversion();
+        } catch (error) {
+            console.error('Error fetching rates:', error);
+            statusMessage.textContent = 'Failed to load exchange rates. Please try again later.';
+            statusMessage.className = 'error';
+        }
+    }
+
+    function populateDropdown(rates) {
+        const fragment = document.createDocumentFragment();
+        
+        for (const currency in rates) {
+            const option = document.createElement('option');
+            option.value = currency;
+            option.textContent = currency;
+           
+            if (currency === 'EUR') option.selected = true; 
+            fragment.appendChild(option);
+        }
+        
+        currencySelect.appendChild(fragment);
+    }
+
+    function calculateConversion() {
+        const amount = parseFloat(amountInput.value);
+        const selectedCurrency = currencySelect.value;
+
+        if (isNaN(amount) || amount < 0) {
+            resultDiv.textContent = 'Please enter a valid amount';
+            return;
+        }
+
+        const rate = exchangeRates[selectedCurrency];
+        const convertedAmount = (amount * rate).toFixed(2);
+        
+        resultDiv.textContent = `${amount} USD = ${convertedAmount} ${selectedCurrency}`;
+    }
+
+   
+    amountInput.addEventListener('input', calculateConversion);
+    currencySelect.addEventListener('change', calculateConversion);
+
+   
+    fetchRates();
+});
+</script>
+
+</body>
+</html>

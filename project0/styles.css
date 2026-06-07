@@ -1,0 +1,194 @@
+/* General Layout & Fonts */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #202124;
+}
+
+/* Header Navigation Links */
+.nav-container {
+    display: flex;
+    justify-content: flex-end;
+    padding: 15px 30px;
+    gap: 15px;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: rgba(0,0,0,0.87);
+    font-size: 13px;
+}
+
+.nav-link:hover {
+    text-decoration: underline;
+}
+
+/* Main Search Box Styling */
+.search-main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 120px;
+}
+
+/* Google Logo Styling */
+.logo {
+    font-size: 90px;
+    font-weight: bold;
+    letter-spacing: -2px;
+    margin-bottom: 30px;
+    position: relative;
+    user-select: none;
+}
+
+.g-blue { color: #4285F4; }
+.g-red { color: #EA4335; }
+.g-yellow { color: #FBBC05; }
+.g-green { color: #34A853; }
+
+.sub-logo {
+    font-size: 16px;
+    color: #4285F4;
+    font-weight: normal;
+    letter-spacing: normal;
+    position: absolute;
+    bottom: 12px;
+    right: -55px;
+}
+
+/* Rounded Search Wrapper */
+.search-box-wrapper {
+    display: flex;
+    align-items: center;
+    width: 584px;
+    height: 44px;
+    border: 1px solid #dfe1e5;
+    border-radius: 24px;
+    padding: 0 14px;
+    margin-bottom: 30px;
+}
+
+.search-box-wrapper:hover, .search-box-wrapper:focus-within {
+    box-shadow: 0 1px 6px rgba(32,33,36,0.28);
+    border-color: rgba(223,225,229,0);
+}
+
+.search-icon {
+    width: 20px;
+    height: 20px;
+    fill: #9aa0a6;
+    margin-right: 10px;
+}
+
+.search-input {
+    flex: 1;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    height: 34px;
+}
+
+/* Centered Button Row Layout */
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+}
+
+.btn {
+    background-color: #f8f9fa;
+    border: 1px solid #f8f9fa;
+    border-radius: 4px;
+    color: #3c4043;
+    font-size: 14px;
+    padding: 0 16px;
+    line-height: 27px;
+    height: 36px;
+    min-width: 54px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.btn:hover {
+    box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+    background-color: #f1f3f4;
+    border: 1px solid #dadce0;
+    color: #202124;
+}
+
+/* ==========================================================================
+   Advanced Search Styles
+   ========================================================================== */
+
+.adv-header h1 {
+    color: #d93025;
+    font-size: 20px;
+    font-weight: normal;
+    margin: 20px 0 10px 40px;
+}
+
+.adv-divider {
+    border: 0;
+    border-top: 1px solid #ebebeb;
+    margin-bottom: 30px;
+}
+
+.adv-container {
+    max-width: 1000px;
+    margin-left: 40px;
+}
+
+.adv-title {
+    font-size: 16px;
+    font-weight: normal;
+    color: #202124;
+    margin-bottom: 25px;
+}
+
+/* Vertically Stacking Rows with Grids */
+.adv-form-row {
+    display: grid;
+    grid-template-columns: 200px 550px;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.adv-label {
+    font-size: 13px;
+    color: #202124;
+}
+
+.adv-input {
+    border: 1px solid #d9d9d9;
+    height: 25px;
+    padding: 2px 6px;
+    font-size: 13px;
+    border-radius: 1px;
+    outline: none;
+}
+
+.adv-input:focus {
+    border: 1px solid #4d90fe;
+}
+
+/* Blue & White Advanced Search Button styling */
+.btn-adv {
+    background-color: #4d90fe;
+    background-image: linear-gradient(top,#4d90fe,#4787ed);
+    border: 1px solid #3079ed;
+    color: #fff;
+    border-radius: 2px;
+    font-weight: bold;
+    font-size: 11px;
+    height: 30px;
+    padding: 0 12px;
+    cursor: pointer;
+    justify-self: end; /* Aligns visually with the input fields */
+}
+
+.btn-adv:hover {
+    background-color: #357ae8;
+    background-image: linear-gradient(top,#4d90fe,#357ae8);
+    border: 1px solid #2f5bb7;
+}

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Advanced Search</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Top Right Navigation Links -->
+    <header class="nav-container">
+        <a href="index.html" class="nav-link">Google Search</a>
+    </header>
+
+    <!-- Advanced Search Header -->
+    <div class="adv-header">
+        <h1>Advanced Search</h1>
+    </div>
+    <hr class="adv-divider">
+
+    <!-- Form Section -->
+    <main class="adv-container">
+        <h2 class="adv-title">Find pages with...</h2>
+        
+        <form action="https://www.google.com/search" method="GET">
+            
+            <!-- Row 1: All these words -->
+            <div class="adv-form-row">
+                <label class="adv-label">all these words:</label>
+                <input type="text" name="as_q" class="adv-input">
+            </div>
+
+            <!-- Row 2: This exact word or phrase -->
+            <div class="adv-form-row">
+                <label class="adv-label">this exact word or phrase:</label>
+                <input type="text" name="as_epq" class="adv-input">
+            </div>
+
+            <!-- Row 3: Any of these words -->
+            <div class="adv-form-row">
+                <label class="adv-label">any of these words:</label>
+                <input type="text" name="as_oq" class="adv-input">
+            </div>
+
+            <!-- Row 4: None of these words -->
+            <div class="adv-form-row">
+                <label class="adv-label">none of these words:</label>
+                <input type="text" name="as_eq" class="adv-input">
+            </div>
+
+            <!-- Submit Button Row -->
+            <div class="adv-form-row">
+                <div class="adv-label"></div> <!-- Spacer -->
+                <input type="submit" value="Advanced Search" class="btn-adv">
+            </div>
+            
+        </form>
+    </main>
+</body>
+</html>
+--
